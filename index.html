@@ -147,6 +147,12 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
+      
+      <!-- <h2 class="subtitle has-text-centered"> -->
+      <h2 class="subtitle has-text-justified">
+        We present <span class="dnerf">INFP</span>, an audio-driven interactive head generation framework for dyadic conversations. Given the dual-track audio in dyadic conversations and a single portrait image of arbitrary agent, our framework can dynamically synthesize verbal, non-verbal and interactive agent videos with lifelike facial expressions and rhythmic head pose movements. Additionally, our framework is lightweight yet powerful, making it practical in instant communication scenarios such as the video conferencing. INFP denotes our method is <span class="dnerf">Interactive</span>, <span class="dnerf">Natural</span>, <span class="dnerf">Flash</span> and <span class="dnerf">Person-generic</span>.
+      </h2>
+
       <div class="columns is-centered">
         <div class="teaser1">
           <div class="column content">
@@ -167,9 +173,7 @@
           </div>
         </div>
       </div>
-      <h2 class="subtitle has-text-centered">
-        We present <span class="dnerf">INFP</span>, an audio-driven interactive head generation framework for dyadic conversations. Given the dual-track audio in dyadic conversations and a single portrait image of arbitrary agent, our framework can dynamically synthesize verbal, non-verbal and interactive agent videos with lifelike facial expressions and rhythmic head pose movements. Additionally, our framework is lightweight yet powerful, making it practical in instant communication scenarios such as the video conferencing. INFP denotes our method is Interactive, Natural, Flash and Person-generic.
-      </h2>
+
     </div>
   </div>
 </section>
@@ -184,7 +188,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Imagine having a conversation with a socially intelligent agent. It can attentively listen to your words and offer visual and linguistic feedback promptly. This seamless interaction allows for multiple rounds of conversation to flow smoothly and naturally. In pursuit of actualizing it, we propose INFP, a novel audio-driven head generation framework for dyadic interaction. Unlike previous head generation works that only focus on single-sided communication, or require man- ual role assignment and explicit role switching, our model drives the agent portrait dynamically alternates between speaking and listening state, guided by the input dyadic au- dio. Specifically, INFP comprises a Motion-Based Head Imitation stage and an Audio-Guided Motion Generation stage. The first stage learns to project facial communica- tive behaviors from real-life conversation videos into a low- dimensional motion latent space, and use the motion latent codes to animate a static image. The second stage learns the mapping from the input dyadic audio to motion latent codes through denoising, leading to the audio-driven head generation in interactive scenarios. To facilitate this line of research, we introduce DyConv, a large scale dataset of rich dyadic conversations collected from the Internet. Extensive experiments and visualizations demonstrate superior per- formance and effectiveness of our method.
+            Imagine having a conversation with a socially intelligent agent. It can attentively listen to your words and offer visual and linguistic feedback promptly. This seamless interaction allows for multiple rounds of conversation to flow smoothly and naturally. In pursuit of actualizing it, we propose INFP, a novel audio-driven head generation framework for dyadic interaction. Unlike previous head generation works that only focus on single-sided communication, or require manual role assignment and explicit role switching, our model drives the agent portrait dynamically alternates between speaking and listening state, guided by the input dyadic audio. Specifically, INFP comprises a Motion-Based Head Imitation stage and an Audio-Guided Motion Generation stage. The first stage learns to project facial communica- tive behaviors from real-life conversation videos into a low-dimensional motion latent space, and use the motion latent codes to animate a static image. The second stage learns the mapping from the input dyadic audio to motion latent codes through denoising, leading to the audio-driven head generation in interactive scenarios. To facilitate this line of research, we introduce DyConv, a large scale dataset of rich dyadic conversations collected from the Internet. Extensive experiments and visualizations demonstrate superior performance and effectiveness of our method.
           </p>
         </div>
       </div>
@@ -194,12 +198,13 @@
     <!-- Method Illustration. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <!-- <h2 class="title is-3">Image</h2> -->
+        <h2 class="title is-3">Method Overview</h2>
         <img src="./static/images/pipeline-v7.2.png"
          class="interpolation-image"
          alt="Interpolate start reference image."/>
+        <div class="content has-text-justified">
         <p>
-        Overview of INFP. The first stage (Motion-Based Head Imitation) learns to project facial communicative behaviors from real-life conversation videos into a low-dimensional motion latent space, and use the latent codes to animate a static image. The second stage (Audio-Guided Motion Generation) learns the mapping from the input dyadic audio to motion latent codes through denoising, to achieve the audio-driven interactive head generation.
+        Schematic illustration of INFP. The first stage (Motion-Based Head Imitation) learns to project facial communicative behaviors from real-life conversation videos into a low-dimensional motion latent space, and use the latent codes to animate a static image. The second stage (Audio-Guided Motion Generation) learns the mapping from the input dyadic audio to motion latent codes through denoising, to achieve the audio-driven interactive head generation.
         </p>
       </div>
     </div>
@@ -222,14 +227,20 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">More Demos</h2>
+    <h2 class="title is-3">Generated Videos</h2>
 
       <!-- Motion diversity. -->
       <h2 class="title is-4">Motion Diverstiy</h2>
+      <div class="content has-text-justified">
+        <p>
+        Our method can generate motion-adapted synthesis results for the same reference image based on different audio inputs.
+        </p>
+      </div>
+
       <div class="columns is-centered">
         <div class="column content has-text-centered">
           <video id="taylor-en" controls playsinline height="100%">
-            <source src="./static/videos/div-1.mp4"
+            <source src="./static/videos/div-3.mp4"
                     type="video/mp4">
           </video>
           <!-- <p> English (Original)</p> -->
@@ -245,7 +256,7 @@
 
         <div class="column content has-text-centered">
           <video id="taylor-de" controls playsinline height="100%">
-            <source src="./static/videos/div-3.mp4"
+            <source src="./static/videos/div-1.mp4"
                     type="video/mp4">
           </video>
           <!-- <p class="is-bold"> German </p> -->
@@ -254,10 +265,16 @@
 
       <!-- Out-of-Distribution. -->
       <h2 class="title is-4">Out-of-Distribution</h2>
+      <div class="content has-text-justified">
+        <p>
+        Our method can support non-human realistic and side-face images.
+        </p>
+      </div>
+
       <div class="columns is-centered">
         <div class="column content has-text-centered">
           <video id="taylor-en" controls playsinline height="100%">
-            <source src="./static/videos/ood-1.mp4"
+            <source src="./static/videos/ood-2.mp4"
                     type="video/mp4">
           </video>
           <!-- <p> English (Original)</p> -->
@@ -265,7 +282,7 @@
 
         <div class="column content has-text-centered">
           <video id="taylor-cn" controls playsinline height="100%">
-            <source src="./static/videos/ood-2.mp4"
+            <source src="./static/videos/ood-1.mp4"
                     type="video/mp4">
           </video>
           <!-- <p class="is-bold"> Chinese </p> -->
@@ -275,6 +292,12 @@
 
       <!-- Agent-Agent-Interaction. -->
       <h2 class="title is-4">Agent-Agent Interaction</h2>
+      <div class="content has-text-justified">
+        <p>
+        Thanks to the flash inference speed of INFP (over 40 fps at Nvidia Tesla A10), our method can achive the real-time agent-agent interaction. Alternatively, human-agent interaction is also enabled.
+        </p>
+      </div>
+
       <div class="columns is-centered">
         <div class="column content">
           <video id="ng-concat" controls playsinline height="100%">
@@ -297,10 +320,17 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Qualitative Comparison</h2>
+    <h2 class="title is-3">Comparing to SOTA Methods</h2>
 
       <!-- Comparing to the SOTA Method. -->
-      <h2 class="title is-4">Comparing to the SOTA Method</h2>
+      <h2 class="title is-4">Interactive Head Generation</h2>
+
+      <div class="content has-text-justified">
+        <p>
+        Unlike existing methods should explicitly and manually switch roles between Listener and Speaker, our method can dynamically adapt to various states, leading to smoother and more natural results.
+        </p>
+      </div>
+
       <div class="columns is-centered">
         <div class="column content">
           <video id="ng-concat" controls playsinline height="100%">
@@ -319,16 +349,34 @@
         </div>
       </div>
       <!-- Comparing to the SOTA Method. -->
-  </div>
+
+<!--   </div>
 </section>
 
 
 <section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Related Tasks</h2>
+  <div class="container is-max-desktop"> -->
+
+      <!-- <h2 class="title is-3">INFP can naturally adapt to related tasks like talking or listening head generation without any modification.</h2> -->
+
+      <!-- <div class="content has-text-justified"> -->
+      <h2 class="title is-5 has-text-justified"> 
+        <p>
+        INFP can naturally adapt to related tasks like talking or listening head generation without any modification.
+        </p>
+      </h2>
+      <!-- </div> -->
+
 
       <!-- Talking Head Generation. -->
       <h2 class="title is-4">Talking Head Generation</h2>
+
+      <div class="content has-text-justified">
+        <p>
+        Our method generates results with high lip-sync accuracy, expressive facial expressions and rhythmic head pose movements.
+        </p>
+      </div>
+
       <div class="columns is-centered">
         <div class="column content">
           <video id="ng-concat" controls playsinline height="100%">
@@ -345,6 +393,12 @@
                     type="video/mp4">
           </video>
         </div>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+        Our method can support singing and different languages.
+        </p>
       </div>
 
       <div class="columns is-centered">
@@ -369,6 +423,14 @@
 
       <!-- Listening Head Generation. -->
       <h2 class="title is-4">Listening Head Generation</h2>
+
+      <div class="content has-text-justified">
+        <p>
+        Our method generates results with high fidelity, natural facial behaviors and diverse head motions. Note that all results except ours stem from the homepage of <a href="https://boese0601.github.io/dim/">DIM</a>. 
+
+        </p>
+      </div>
+
       <div class="columns is-centered">
         <div class="column content">
           <video id="ng-concat" controls playsinline height="100%">
