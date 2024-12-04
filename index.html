@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="INFP achieves interactive head generation for dyadic conversations.">
+  <meta name="keywords" content="Animation, Attention, Visual Dubbing">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INFP: Audio-Driven Interactive Head Generation in Dyadic Conversations</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">INFP: Audio-Driven Interactive Head Generation in Dyadic Conversations</h1>
+          <!-- <h1 class="title is-4 publication-title">SIGGRAPH Asia 2024 (Conference Track)</h1> -->
+          <div class="is-size-5 publication-authors">
+
+            <span class="author-block">
+              <!-- <a href="https://scholar.google.com/citations?user=6VNGNQoAAAAJ">Shuang Liang</a><sup>*</sup>, -->
+              <a href="">Yongming Zhu</a><sup>*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Longhao Zhang</a><sup>*</sup>,
+            </span>
+            <span class="author-block">
+              <!-- <a href="https://scholar.google.com/citations?user=qkJD6c0AAAAJ">Longhao Zhang</a><sup>*</sup>, -->
+              <a href="">Zhengkun Rong</a><sup>*</sup>,
+            </span>
+            <span class="author-block">
+              <!-- <a href="https://scholar.google.com/citations?hl=en&user=BIixVT0AAAAJ">Tianshu Hu</a><sup>*†</sup> -->
+              <a href="">Tianshu Hu</a><sup>*†</sup>,
+            </span>
+            <span class="author-block">
+              <!-- <a href="https://scholar.google.com/citations?user=6VNGNQoAAAAJ">Shuang Liang</a><sup>*</sup>, -->
+              <a href="">Shuang Liang</a>,
+            </span>
+            <span class="author-block">
+              <a href="">Zhipeng Ge</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Bytedance</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="eql-cntrb"><Small><sup>*</sup>Equal Contribution</Small></span>
+            <span class="eql-cntrb"><Small><sup>†</sup>Corresponding Author</Small></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered">
+        <div class="teaser1">
+          <div class="column content">
+            <!-- <video id="teaser1" autoplay controls muted loop playsinline height="100%"> -->
+            <video id="teaser1" controls playsinline height="100%">
+              <source src="./static/videos/demo-1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <div class="teaser2">
+          <div class="column content">
+            <video id="teaser2" controls playsinline height="100%">
+              <source src="./static/videos/demo-2.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        We present <span class="dnerf">INFP</span>, an audio-driven interactive head generation framework for dyadic conversations. Given the dual-track audio in dyadic conversations and a single portrait image of arbitrary agent, our framework can dynamically synthesize verbal, non-verbal and interactive agent videos with lifelike facial expressions and rhythmic head pose movements. Additionally, our framework is lightweight yet powerful, making it practical in instant communication scenarios such as the video conferencing. INFP denotes our method is Interactive, Natural, Flash and Person-generic.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Imagine having a conversation with a socially intelligent agent. It can attentively listen to your words and offer visual and linguistic feedback promptly. This seamless interaction allows for multiple rounds of conversation to flow smoothly and naturally. In pursuit of actualizing it, we propose INFP, a novel audio-driven head generation framework for dyadic interaction. Unlike previous head generation works that only focus on single-sided communication, or require man- ual role assignment and explicit role switching, our model drives the agent portrait dynamically alternates between speaking and listening state, guided by the input dyadic au- dio. Specifically, INFP comprises a Motion-Based Head Imitation stage and an Audio-Guided Motion Generation stage. The first stage learns to project facial communica- tive behaviors from real-life conversation videos into a low- dimensional motion latent space, and use the motion latent codes to animate a static image. The second stage learns the mapping from the input dyadic audio to motion latent codes through denoising, leading to the audio-driven head generation in interactive scenarios. To facilitate this line of research, we introduce DyConv, a large scale dataset of rich dyadic conversations collected from the Internet. Extensive experiments and visualizations demonstrate superior per- formance and effectiveness of our method.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Method Illustration. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <!-- <h2 class="title is-3">Image</h2> -->
+        <img src="./static/images/pipeline-v7.2.png"
+         class="interpolation-image"
+         alt="Interpolate start reference image."/>
+        <p>
+        Overview of INFP. The first stage (Motion-Based Head Imitation) learns to project facial communicative behaviors from real-life conversation videos into a low-dimensional motion latent space, and use the latent codes to animate a static image. The second stage (Audio-Guided Motion Generation) learns the mapping from the input dyadic audio to motion latent codes through denoising, to achieve the audio-driven interactive head generation.
+        </p>
+      </div>
+    </div>
+    <!--/ Method Illustration. -->
+
+    <!-- Paper video. -->
+<!--     <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">More Demos</h2>
+
+      <!-- Motion diversity. -->
+      <h2 class="title is-4">Motion Diverstiy</h2>
+      <div class="columns is-centered">
+        <div class="column content has-text-centered">
+          <video id="taylor-en" controls playsinline height="100%">
+            <source src="./static/videos/div-1.mp4"
+                    type="video/mp4">
+          </video>
+          <!-- <p> English (Original)</p> -->
+        </div>
+
+        <div class="column content has-text-centered">
+          <video id="taylor-cn" controls playsinline height="100%">
+            <source src="./static/videos/div-2.mp4"
+                    type="video/mp4">
+          </video>
+          <!-- <p class="is-bold"> Chinese </p> -->
+        </div>
+
+        <div class="column content has-text-centered">
+          <video id="taylor-de" controls playsinline height="100%">
+            <source src="./static/videos/div-3.mp4"
+                    type="video/mp4">
+          </video>
+          <!-- <p class="is-bold"> German </p> -->
+        </div>
+      </div>
+
+      <!-- Out-of-Distribution. -->
+      <h2 class="title is-4">Out-of-Distribution</h2>
+      <div class="columns is-centered">
+        <div class="column content has-text-centered">
+          <video id="taylor-en" controls playsinline height="100%">
+            <source src="./static/videos/ood-1.mp4"
+                    type="video/mp4">
+          </video>
+          <!-- <p> English (Original)</p> -->
+        </div>
+
+        <div class="column content has-text-centered">
+          <video id="taylor-cn" controls playsinline height="100%">
+            <source src="./static/videos/ood-2.mp4"
+                    type="video/mp4">
+          </video>
+          <!-- <p class="is-bold"> Chinese </p> -->
+        </div>
+      </div>
+      <!-- Multilingual Translation. -->
+
+      <!-- Agent-Agent-Interaction. -->
+      <h2 class="title is-4">Agent-Agent Interaction</h2>
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="ng-concat" controls playsinline height="100%">
+            <source src="./static/videos/agent-1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="column content">
+          <video id="bengio-concat" controls playsinline height="100%">
+            <source src="./static/videos/agent-2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- Agent-Agent-Interaction. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Qualitative Comparison</h2>
+
+      <!-- Comparing to the SOTA Method. -->
+      <h2 class="title is-4">Comparing to the SOTA Method</h2>
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="ng-concat" controls playsinline height="100%">
+            <source src="./static/videos/cmp-1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="bengio-concat" controls playsinline height="100%">
+            <source src="./static/videos/cmp-2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- Comparing to the SOTA Method. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Related Tasks</h2>
+
+      <!-- Talking Head Generation. -->
+      <h2 class="title is-4">Talking Head Generation</h2>
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="ng-concat" controls playsinline height="100%">
+            <source src="./static/videos/talk-1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="bengio-concat" controls playsinline height="100%">
+            <source src="./static/videos/talk-2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="ng-concat" controls playsinline height="100%">
+            <source src="./static/videos/talk-3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="ng-concat" controls playsinline height="100%">
+            <source src="./static/videos/talk-4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- Talking Head Generation. -->
+
+
+      <!-- Listening Head Generation. -->
+      <h2 class="title is-4">Listening Head Generation</h2>
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="ng-concat" controls playsinline height="100%">
+            <source src="./static/videos/listen-1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column content">
+          <video id="bengio-concat" controls playsinline height="100%">
+            <source src="./static/videos/listen-2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- Listening Head Generation. -->
+
+
+      <!-- Visual Effects. -->
+<!--       <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Visual Effects</h2>
+          <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div> -->
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+<!--       <div class="column">
+        <h2 class="title is-3">Matting</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              As a byproduct of our method, we can also solve the matting problem by ignoring
+              samples that fall outside of a bounding box during rendering.
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/matting.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+    <!--/ Matting. -->
+
+    <!-- Animation. -->
+<!--     <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2> -->
+
+        <!-- Interpolating. -->
+<!--         <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/> -->
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+<!--         <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!--/ Re-rendering. -->
+
+<!--       </div>
+    </div> -->
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+<!--     <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <h2 class="title is-4">Ethics Concerns</h2>
+          <p>
+            The purpose of this work is only for research. The images and audios used in these demos are from public sources. If there are any concerns, please contact us (hutianshu007@gmail.com) and we will delete it in time.
+          </p>
+          
+          <h2 class="title is-4">Acknowledgement</h2>
+          <p>
+            This website is built using the 
+            <a rel="license" href="https://github.com/nerfies/nerfies.github.io">Academic Project Page Template</a>.
+            We would like to thank  <a href="https://nerfies.github.io/">Nerfies</a> for providing the source code.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+<!-- <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html> -->
